@@ -20,6 +20,9 @@ main {
   border: 2px red solid;
 
 }
+#title{
+  font-size: 6rem;
+}
 .movies{
     display: flex;
     justify-content: space-around;
@@ -29,4 +32,22 @@ main {
 .card{
     border: 2px white solid;
     margin: 2vh 0vw;
+}
+img{
+  margin-top: 1vh;
+  height: 30rem;
+}
+h5{
+  margin-top: 1vh;
+  font-size: 2.5rem;
+}
+.card-text{
+  display: flex;
+  flex-direction: column;
+  margin-top: -4vh;
+  border: 1px red solid;
+  font-size: 1.6rem;
+}
+p{
+  margin-top: 0;
 }

@@ -14,27 +14,26 @@ const genres = {
   53: "Thriller",
 };
 
-let movie_id = 0;
-let movieDB = [];
-
 module.exports = {
   getMovies: async () => {
     try {
+      const desiredGenres = Object.keys(genres).length;
       let movieDB = [];
       let movie_id = 1;
-
+  
       for (let year = 2000; year <= 2023; year++) {
         const res = await axios.get(
           `${baseURL}&language=en-US&region=US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&primary_release_year=${year}&year=${year}&with_original_language=en&with_watch_monetization_types=flatrate`
         );
-
-        let movies = res.data.results.splice(0, 10);
-
+  
+        let movies = res.data.results.splice(0,10);
+        let currGenre = new Set();
+  
         for (let i = 0; i < movies.length; i++) {
           if (genres[movies[i].genre_ids[0]] == undefined) {
             continue;
           } else {
-            let movieTitle = movies[i].original_title.replace("'", '"')
+            let movieTitle = movies[i].original_title.replace("'", '"');
             let outline = {
               id: movie_id,
               movie_title: movieTitle,
@@ -43,11 +42,17 @@ module.exports = {
               genre: movies[i].genre_ids[0],
             };
             movie_id++;
+            currGenre.add(movies[i].genre_ids[0]);
             movieDB.push(outline);
           }
         }
+  
+        // Check if all desired genres have been added for the year
+        if (currGenre.size === desiredGenres) {
+          break;
+        }
       }
-
+  
       return movieDB;
     } catch (err) {
       throw new Error(err);
