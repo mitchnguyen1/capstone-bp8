@@ -1,9 +1,10 @@
 const movieDisplay = document.querySelector(".movies");
+import {shuffle} from './shuffle.js'
 axios
   .get("http://localhost:4000/api/getAllMovies")
   .then((res) => {
     // Get the response data
-    const data = res.data;
+    const data = shuffle(res.data);
     for (let i = 0; i < data.length; i++) {
       let title = data[i].movie_title;
       let year = data[i].movie_year;

@@ -22,7 +22,7 @@ module.exports = {
   
       for (let year = 2000; year <= 2023; year++) {
         const res = await axios.get(
-          `${baseURL}&language=en-US&region=US&sort_by=popularity.desc&include_adult=true&include_video=false&page=1&primary_release_year=${year}&year=${year}&with_original_language=en&with_watch_monetization_types=flatrate`
+          `${baseURL}&language=en-US&region=US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=${year}&year=${year}&with_original_language=en&with_watch_monetization_types=flatrate`
         );
   
         let movies = res.data.results.splice(0,10);
