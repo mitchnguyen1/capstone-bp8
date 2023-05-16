@@ -13,6 +13,7 @@ body {
   border: 3px solid dodgerblue;
   border-radius: 50%;
   pointer-events: none;
+  z-index: 1;
 }
 
 main {
