@@ -32,6 +32,7 @@ main {
 .card{
     border: 2px white solid;
     margin: 2vh 0vw;
+    width: 25rem;
 }
 img{
   margin-top: 1vh;

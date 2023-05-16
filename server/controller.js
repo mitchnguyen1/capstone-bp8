@@ -52,7 +52,12 @@ module.exports = {
       .catch((err) => console.log("Error seeding DB", err));
   },
   getAllMovies: (req,res) =>{
-    sequelize.query("SELECT * FROM movie")
+    sequelize.query(`
+        SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre
+        FROM movie m
+        JOIN movie_genre mg ON m.movie_id = mg.movie_id
+        JOIN genre g ON mg.genre_id = g.genre_id    
+    `)
     .then(dbRes => res.status(200).send(dbRes[0]))
     .catch(err => console.log(err))
   }

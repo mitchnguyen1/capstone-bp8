@@ -17,9 +17,8 @@ const genres = {
 module.exports = {
   getMovies: async () => {
     try {
-      const desiredGenres = Object.keys(genres).length;
       let movieDB = [];
-      let movie_id = 1;
+      let movie_id = 0;
   
       for (let year = 2000; year <= 2023; year++) {
         const res = await axios.get(
@@ -46,13 +45,7 @@ module.exports = {
             movieDB.push(outline);
           }
         }
-  
-        // Check if all desired genres have been added for the year
-        if (currGenre.size === desiredGenres) {
-          break;
-        }
       }
-  
       return movieDB;
     } catch (err) {
       throw new Error(err);
