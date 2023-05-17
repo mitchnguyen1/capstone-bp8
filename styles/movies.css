@@ -2,6 +2,11 @@ body {
   background-color: black;
   color: white;
   text-align: center;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .ball {
@@ -51,4 +56,14 @@ h5{
 }
 p{
   margin-top: 0;
+}
+
+.delete{
+  background-color: red;
+  width: 2vw;
+  height: 2vh;
+  border-radius: 15px;
+  position:absolute;
+  right:5px;
+  top: 5px
 }

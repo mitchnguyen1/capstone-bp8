@@ -30,7 +30,7 @@ module.exports = {
           genre_id INTEGER REFERENCES genre(genre_id)
         );
     `;
-    
+
     getMovies()
       .then((moviesDB) => {
         for (let i = 0; i < moviesDB.length; i++) {
@@ -51,14 +51,37 @@ module.exports = {
       })
       .catch((err) => console.log("Error seeding DB", err));
   },
-  getAllMovies: (req,res) =>{
-    sequelize.query(`
+  getAllMovies: (req, res) => {
+    sequelize
+      .query(
+        `
         SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre
         FROM movie m
         JOIN movie_genre mg ON m.movie_id = mg.movie_id
         JOIN genre g ON mg.genre_id = g.genre_id    
-    `)
-    .then(dbRes => res.status(200).send(dbRes[0]))
-    .catch(err => console.log(err))
-  }
+    `
+      )
+      .then((dbRes) => res.status(200).send(dbRes[0]))
+      .catch((err) => console.log(err));
+  },
+  deleteMovie: (req, res) => {
+      const { id } = req.params;
+      let newId = Number(id);
+      const query = `
+        DELETE FROM movie_genre
+        WHERE movie_id = ${newId};
+
+        DELETE FROM movie 
+        WHERE movie_id = ${newId};
+
+
+        SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre
+        FROM movie m
+        JOIN movie_genre mg ON m.movie_id = mg.movie_id
+        JOIN genre g ON mg.genre_id = g.genre_id;
+      `;
+      sequelize.query(query)
+      .then((dbRes) => res.status(200).send(dbRes[0]))
+      .catch((err) => console.log(err));
+  },
 };
