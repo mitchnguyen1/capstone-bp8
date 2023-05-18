@@ -1,3 +1,4 @@
+
 gsap.set(".ball", {xPercent: -50, yPercent: -50});
 
 let xTo = gsap.quickTo(".ball", "x", {duration: 0.6, ease: "power3"}),

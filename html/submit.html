@@ -20,21 +20,26 @@
       <h1 id="title">Submit a Movie</h1>
       <form>
         <label for="movieTitle">Title:</label>
-        <input type="text" id="movieTitle" name="movieTitle" />
+        <input type="text" id="movieTitle" name="movieTitle"/>
         <label for="movieGenre">Genre:</label>
         <select name="movieGenre" id="movieGenre">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="28">Action</option>
+          <option value="12">Adventure</option>
+          <option value="35">Comedy</option>
+          <option value="18">Drama</option>
+          <option value="14">Fantasy</option>
+          <option value="27">Horror</option>
+          <option value="53">Thriller</option>
         </select>
         <label for="movieYear">Year:</label>
         <input type="number" id="movieYear" name="movieYear min="1900"
-        max="2023" step="1" value=""/>
+        max="2023" step="1" value="2000"/>
         <input type="submit" id="submit" />
       </form>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/gsap.js"></script>
+    <script src="../js/submit.js"></script>
   </body>
 </html>

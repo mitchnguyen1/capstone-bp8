@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Roulette</title>
     <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/movies.css">
     <link rel="icon" href="../images/roulette.png" />
     <a
       href="https://www.flaticon.com/free-icons/roulette"
@@ -21,24 +22,33 @@
       <form>
         <label for="movie">Select a movie:</label>
         <select name="movie" id="movie">
-            <option value="volvo">Volvo</option>
+          <option value="68">2012</option>
         </select>
         <label for="movieTitle">Title:</label>
         <input type="text" id="movieTitle" name="movieTitle" />
+
         <label for="movieGenre">Genre:</label>
         <select name="movieGenre" id="movieGenre">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="28">Action</option>
+          <option value="12">Adventure</option>
+          <option value="35">Comedy</option>
+          <option value="18">Drama</option>
+          <option value="14">Fantasy</option>
+          <option value="27">Horror</option>
+          <option value="53">Thriller</option>
         </select>
+
         <label for="movieYear">Year:</label>
         <input type="number" id="movieYear" name="movieYear min="1900"
-        max="2023" step="1" value=""/>
-        <input type="submit" id="submit" value="Update"/>
+        max="2030" step="1" value="2000"/>
+
+        <input type="submit" id="submit" value="Update" />
       </form>
+      <section class="movies"></section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../js/gsap.js"></script>
+    <script src="../js/update.js"></script>
   </body>
 </html>

@@ -1,4 +1,6 @@
 const movieDisplay = document.querySelector(".movies");
+
+//function to shuffle the movies
 function shuffle(sourceArray) {
   for (var i = 0; i < sourceArray.length - 1; i++) {
       var j = i + Math.floor(Math.random() * (sourceArray.length - i));
@@ -14,7 +16,7 @@ function shuffle(sourceArray) {
 //function to display movies
 const displayCard = (res) => {
    // Get the response data
-   const data = (res.data);
+   const data = shuffle(res.data);
    console.log(data[0])
    for (let i = 0; i < data.length; i++) {
      let id = data[i].movie_id
