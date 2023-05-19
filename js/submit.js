@@ -20,5 +20,7 @@ const submitMovie = (e) => {
 };
 //add a success
 
+
+
 form.addEventListener("submit", submitMovie);
 

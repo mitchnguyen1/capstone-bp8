@@ -7,7 +7,7 @@ html {
       src: url(../images/BasementGrotesque-Black_v1.202.otf);
   }
   body {
-    background-image: url(../images/mac.jpg);
+    background-image: url(../images/peakpx.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -17,14 +17,19 @@ html {
     height: 100%;
     overflow: hidden;
     position: relative;
-    backdrop-filter: blur(10px);
-    --color-text-circle-1: #e9ecef;
-    --color-text-circle-2: #6910a8;
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(4px);
+    --color-text-circle-1: white;
+    --color-text-circle-2: rgb(255, 30, 30);
     --font-circle-1: niagara, serif;
     --font-weight-circle-1: 300;
     --font-circle-2: ambroise-firmin-std, serif;
     --font-weight-circle-2: 300;
-
+    --darkBlue: #000d18;
+    --dBlue: #051337;
+    --blue: #6688cc;
+    --lightBlue: #3794ff;
   }
   .ball {
     width: 50px;
@@ -37,43 +42,54 @@ html {
     pointer-events: none;
     z-index: 1;
   }
+  .blackBackground{
+    background-color: #39095b;
+    background-image: linear-gradient(var(--dBlue),var(--darkBlue));
+    width: 100%;
+    margin-left: -5vh;
+    display: flex;
+    align-items: center;
+  }
   
   .buttons {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  
+    align-items: baseline;
+    justify-content: center;
+    z-index: 1;
   }
   button {
-    font-size: 9vmin;
+    font-size: 10vmin;
     height: auto;
-    width: max-content;
-    margin: -0.7vh 0;
+    line-height: 10vh;
     background-color: transparent;
     border: none;
     color: white;
     padding: 0;
     font-family: "Bebas Neue", sans-serif;
+    white-space: nowrap;
+    transition: 0.5s;
   }
   button:hover {
-    color: #6910a8;
+    color: rgb(255, 30, 30);
+    font-size: 12vmin; /* Adjust this value as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 0.5s;
+  }
+
+  .left{
+    display: flex;
+    align-items: center;
   }
   
   
   .circles {
       pointer-events: none;
-      position: absolute;
-      --dim: 120vmin;
+      --dim: 80vmin;
       width: var(--dim);
       height: var(--dim);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Add this property to center the element correctly */
     }
   
   
@@ -95,36 +111,32 @@ html {
     font-family: var(--font-circle-2);
     font-weight: var(--font-weight-circle-2);
     fill: var(--color-text-circle-2);
+
   }
-  
   
   
   img {
     cursor: pointer;
   }
-  
-/* form{
-    font-size: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-}
-input{
+  #X{
+    position: absolute;
+    top: 5vh;
+    right: 20vh;
+    width:12vw;
+  }
+  
+  #arrow{
+    position: absolute;
+    bottom: 0;
+    right:10vw;
+    width: 25vw
+  }
+
+  #smallX{
+    position: absolute;
+    top: 2vh;
+    right:30vw;
     width: 20vw;
-    height: 5vh;
-    text-align: center;
-    font-size: 2rem;
-}
-select{
-    font-size: 2rem;
-}
-#movieTitle{
-    width: 30rem;
-}
-#submit{
-    margin-top: 2rem;
-}
-.random{
-    font-size: 3.5rem;
-} */
+  }
+

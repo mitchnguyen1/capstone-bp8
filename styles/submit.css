@@ -1,0 +1,78 @@
+html {
+    margin: 0;
+    height: 100%;
+  }
+  @font-face {
+    font-family: "Basement";
+    src: url(../images/BasementGrotesque-Black_v1.202.otf);
+}
+body {
+    background-color: var(--darkBlue);
+    text-align: center;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    color: white;
+    --darkBlue: #000d18;
+    --pink: #f280cf;
+    --purple: #8e60ac;
+    --green: #20ab44;
+    --dBlue: #051337;
+    --grey: #171d29;
+    --blue: #6688cc;
+    --lightBlue: #3794ff;
+  }
+  .ball {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 3px solid rgb(255, 30, 30);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  nav {
+    background-color: var(--grey);
+  }
+
+  a{
+    color: white;
+  }
+section{
+    border: 10px solid var(--dBlue);
+    background-color: var(--dBlue);
+    width:min-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    text-align: center;
+    box-shadow: 0px 0px 10px -3px rgba(55,148,255,1);
+}
+form{
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 8vw;
+}
+input{
+    width: 20vw;
+    height: 5vh;
+    text-align: center;
+    font-size: 2rem;
+}
+select{
+    font-size: 2rem;
+}
+#movieTitle{
+    width: 30rem;
+}
+#submit{
+    margin-top: 2rem;
+}
+.random{
+    font-size: 3.5rem;
+}

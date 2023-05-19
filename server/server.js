@@ -5,7 +5,7 @@ const cors = require('cors')
 const {SERVER_PORT} = process.env
 const {seed, getAllMovies, deleteMovie, submitMovie, randomMovie, updateMovie} = require('./controller.js')
  
-
+app.use(express.static(`${__dirname}/../html`))
 app.use(express.json())
 app.use(cors())
 
