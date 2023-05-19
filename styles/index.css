@@ -1,51 +1,109 @@
-body {
-  background-color: black;
-  color: white;
-  text-align: center;
-}
-
-.ball {
-  width: 50px;
-  height: 50px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  border: 3px solid dodgerblue;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-main{
-    border: 2px red solid;
+html {
     margin: 0;
+    height: 100%;
+  }
+  @font-face {
+      font-family: "Basement";
+      src: url(../images/BasementGrotesque-Black_v1.202.otf);
+  }
+  body {
+    background-image: url(../images/mac.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #e9ecef;
+    text-align: center;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px);
+    --color-text-circle-1: #e9ecef;
+    --color-text-circle-2: #6910a8;
+    --font-circle-1: niagara, serif;
+    --font-weight-circle-1: 300;
+    --font-circle-2: ambroise-firmin-std, serif;
+    --font-weight-circle-2: 300;
+
+  }
+  .ball {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 3px solid rgb(255, 30, 30);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    padding: 3vh 20vw;
-    padding-bottom: 10vh;
-}
-
-#title{
-    font-size: 5rem;
-    border: 1px green solid;
-    white-space: nowrap;
-}
-
-.buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-button{
-    font-size: 50px;
+  
+  }
+  button {
+    font-size: 9vmin;
     height: auto;
     width: max-content;
-    margin: 2vh 0vw;
-}
-form{
+    margin: -0.7vh 0;
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 0;
+    font-family: "Bebas Neue", sans-serif;
+  }
+  button:hover {
+    color: #6910a8;
+  }
+  
+  
+  .circles {
+      pointer-events: none;
+      position: absolute;
+      --dim: 120vmin;
+      width: var(--dim);
+      height: var(--dim);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Add this property to center the element correctly */
+    }
+  
+  
+  .circles__text {
+    text-transform: uppercase;
+    transform-origin: 700px 700px;
+    will-change: transform, opacity;
+  }
+  
+  .circles__text--1 {
+    font-size: 130px;
+    font-family: var(--font-circle-1);
+    font-weight: var(--font-weight-circle-1);
+    fill: var(--color-text-circle-1);
+  }
+  
+  .circles__text--2 {
+    font-size: 130px;
+    font-family: var(--font-circle-2);
+    font-weight: var(--font-weight-circle-2);
+    fill: var(--color-text-circle-2);
+  }
+  
+  
+  
+  img {
+    cursor: pointer;
+  }
+  
+/* form{
     font-size: 5rem;
     display: flex;
     flex-direction: column;
@@ -69,4 +127,4 @@ select{
 }
 .random{
     font-size: 3.5rem;
-}
+} */
