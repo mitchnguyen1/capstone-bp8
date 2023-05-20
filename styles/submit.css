@@ -8,18 +8,18 @@ body {
   src: url(../images/BasementGrotesque-Black_v1.202.otf);
 }
 main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 4vw; 
-    margin-top: -5vh;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 4vw;
+  margin-top: -5vh;
+}
 
 body {
-  background-color: #051236;
-  background-image: linear-gradient(var(--dBlue), var(--darkBlue));
+  background-color: #0c092c;
+  /* background-image: linear-gradient(var(--dBlue), var(--darkBlue)); */
   font-family: "basement";
   text-align: center;
   margin: 0;
@@ -74,21 +74,41 @@ nav {
   box-shadow: 8px 8px 20px #090c10, -8px -8px 20px #252e42;
 }
 
+
 .submit {
-    background-color: var(--grey);
-    width: min-content;
-    text-align: center;
-    border-radius: 64px;
-    background: #06143a;
-    box-shadow: 13px 13px 26px #050f2c, -13px -13px 26px #071948;
-    padding: 2rem 0;
-  }
+  background-color: var(--grey);
+  width: 50%;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #262433;
+  box-shadow: 0px 0px 22px -6px rgba(102,136,204,1);
+}
+.bar{
+  height: auto;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  background-color: var(--grey);
+  display: flex;
+  align-items: start;
+}
+.tinyButtons{
+  margin-left: 0.5vw;
+}
+#red,#yellow,#green{
+  height: 1.5vh;
+  border-radius: 50%;
+  margin: 0.8vh 0.15vw;
+  z-index: 1;
+}
+
 
 #title {
-  font-size: 6vh;
+  margin-top: 3vh;
+  font-size: 8vh;
 }
 form {
-  font-size: 5rem;
+  font-size: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,28 +141,28 @@ select {
 .random {
   font-size: 3.5rem;
 }
-.movies{
-    /* display:block; */
-    display: none;
+.movies {
+  display:block;
+  /* display: none; */
 }
-.card{
-    margin: 1vh 0vw;
-    padding: 0 1vw;
-    border-radius: 64px;
-    color: white;
-    background: #06143a;
-    box-shadow: 13px 13px 26px #050f2c, -13px -13px 26px #071948;
-
+.card {
+  margin: 1vh 1vw;
+  border-radius: 64px;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #3c375d;
+  box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
 }
-img{
-  margin-top: 3vh;
+img {
   height: 35rem;
-  border-radius: 10px;
+  border-radius: 40px !important;
+  padding: 2vh 1.5vw;
 }
-h5{
+h5 {
   font-size: 2.5rem;
 }
-.card-text{
+.card-text {
   display: flex;
   flex-direction: column;
   margin-top: 0vh;

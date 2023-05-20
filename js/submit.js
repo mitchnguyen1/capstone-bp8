@@ -1,5 +1,6 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".movies");
+
 const submitMovie = (e) => {
   e.preventDefault();
   let title = document.querySelector("#movieTitle").value;
@@ -13,16 +14,48 @@ const submitMovie = (e) => {
   axios
     .post("http://localhost:4000/api/submitMovie", body)
     .then((res) => {
-      let { movie_title, movie_img,genre } = res.data[res.data.length-1];
-      movieDisplay.innerHTML=""
-      // Create a bootstrap card element
+      let { movie_title, movie_img, genre } = res.data[res.data.length - 1];
+      movieDisplay.innerHTML = "";
+      
       let card = document.createElement("div");
       card.setAttribute("class", "card");
+      
+      let bar = document.createElement("div");
+      bar.setAttribute("class", "bar");
+      
+      let tinyButtons = document.createElement("div");
+      tinyButtons.setAttribute("class", "tinyButtons");
+      
+      let colors = { red: "#FF605C", yellow: "#FFBD44", green: "#00CA4E" };
+      for (let color in colors) {
+        let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("id", color);
+        svg.setAttribute("viewBox", "0 0 100 100");
+      
+        let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", "50");
+        circle.setAttribute("cy", "50");
+        circle.setAttribute("r", "50");
+        circle.setAttribute("fill", colors[color]);
+      
+        svg.appendChild(circle);
+        tinyButtons.appendChild(svg);
+      }
+      
+      bar.appendChild(tinyButtons);
+      card.appendChild(bar);
+      
+ 
+      
+
 
       // Create an image element and append it to the card
       let image = document.createElement("img");
       image.setAttribute("class", "card-img-top");
-      image.setAttribute("src", "https://image.tmdb.org/t/p/original" + movie_img);
+      image.setAttribute(
+        "src",
+        "https://image.tmdb.org/t/p/original" + movie_img
+      );
       card.appendChild(image);
 
       // Create a body div and append it to the card
@@ -51,7 +84,7 @@ const submitMovie = (e) => {
 
       // Add the card to the movie display
       movieDisplay.appendChild(card);
-      movieDisplay.style.display = "block"
+      movieDisplay.style.display = "block";
     })
     .catch((err) => {
       console.log(err);

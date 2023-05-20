@@ -7,22 +7,12 @@ body {
   font-family: "Basement";
   src: url(../images/BasementGrotesque-Black_v1.202.otf);
 }
-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 4vw; 
-    margin-top: -5vh;
-  }
 
 body {
   background-color: #051236;
   background-image: linear-gradient(var(--dBlue), var(--darkBlue));
   font-family: "basement";
   text-align: center;
-  margin: 0;
   height: 100%;
   overflow: hidden;
   color: white;
@@ -34,6 +24,13 @@ body {
   --grey: #171d29;
   --blue: #6688cc;
   --lightBlue: #3794ff;
+}
+main {
+  margin: 2vh 2vw;
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .ball {
   width: 50px;
@@ -59,7 +56,7 @@ nav {
   background-color: #171d29;
   padding: 12px 24px;
   font-size: 2vh;
-  color: #ffffff ;
+  color: #ffffff;
   margin: 1vh 0.5vw;
   z-index: 1;
   border-radius: 13px;
@@ -72,4 +69,106 @@ nav {
   color: var(--pink);
   transform: translateY(-2px);
   box-shadow: 8px 8px 20px #090c10, -8px -8px 20px #252e42;
+}
+
+section {
+  width: 50%;
+  height: max-content;
+  margin: 4vh 0vw;
+  margin-left: 4vw;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #3c375d;
+  box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
+}
+.bar {
+  height: auto;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  background-color: var(--grey);
+  display: flex;
+  align-items: start;
+}
+.tinyButtons {
+  margin-left: 0.5vw;
+}
+#red,
+#yellow,
+#green {
+  height: 1.5vh;
+  border-radius: 50%;
+  margin: 0.8vh 0.15vw;
+}
+
+.title{
+  margin-top: 1vh;
+}
+.Buttons{
+  margin-bottom:2vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.genre-button {
+  margin: 1vh 1vw;
+  color: white;
+  font-size: 3vh;
+  border-radius: 38px;
+  background: linear-gradient(145deg, #403b64, #363254);
+  box-shadow: 5px 5px 10px #1e1c2f, -5px -5px 10px #5a538c;
+}
+.year-button{
+  margin: 0.5vh 0.5vw;
+  color: white;
+  font-size: 2.5vh;
+  border-radius: 38px;
+  background: linear-gradient(145deg, #403b64, #363254);
+  box-shadow: 5px 5px 10px #1e1c2f, -5px -5px 10px #5a538c;
+}
+
+.clicked {
+  border-radius: 38px;
+  background: #3c375d;
+  box-shadow: inset 5px 5px 10px #1e1c2f, inset -5px -5px 10px #5a538c;
+}
+.purple{
+  color: var(--purple);
+}
+
+.pink{
+  color: var(--pink);
+}
+
+.card {
+  position:absolute;
+  top:50%;
+  right:15%;
+  transform: translate(15%,-50%);
+  width: max-content;
+  
+
+  border-radius: 64px;
+  color: white;
+
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #3c375d;
+  box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
+}
+img {
+  height: 35rem;
+  border-radius: 40px !important;
+  padding: 1.5vh 1.5vw;
+}
+
+h5 {
+  font-size: 2.5rem;
+}
+.card-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0vh;
+  font-size: 1.6rem;
 }

@@ -21,7 +21,7 @@
     >
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <button
           class="navbar-toggler"
@@ -66,6 +66,19 @@
 
     <main>
       <section class="submit">
+      <div class="bar">
+       <div class="tinyButtons">
+        <svg id="red" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#FF605C" />
+        </svg>
+        <svg id="yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#FFBD44" />
+        </svg>
+        <svg id="green" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#00CA4E" />
+        </svg>
+       </div>
+      </div>
         <h1 id="title">Submit A Movie</h1>
         <form>
           <label for="movieTitle">Title:</label>
@@ -86,9 +99,23 @@
           <input type="submit" id="submit" />
         </form>
       </section>
-  
-      <section class="movies"></section>
-     
+
+      <section class="movies">
+        <div class="card">
+        <div class="bar">
+          <div class="tinyButtons">
+           <svg id="red" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+             <circle cx="50" cy="50" r="50" fill="#FF605C" />
+           </svg>
+           <svg id="yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+             <circle cx="50" cy="50" r="50" fill="#FFBD44" />
+           </svg>
+           <svg id="green" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+             <circle cx="50" cy="50" r="50" fill="#00CA4E" />
+           </svg>
+          </div>
+         </div>
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/original/OqqqR80D3nMbsqtAy7yPtCLddo.jpg"><div class="card-body"><h5 class="card-title">Paid in Full</h5><div class="card-text"><p>Year: 2000</p><p>Genre: Action</p></div></div></div></section>
     </main>
 
     <script
