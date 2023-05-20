@@ -1,11 +1,32 @@
+html,
 body {
-  background-color: black;
+  margin: 0;
+  height: 100%;
+}
+@font-face {
+  font-family: "Basement";
+  src: url(../images/BasementGrotesque-Black_v1.202.otf);
+}
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 4vw; 
+    margin-top: -5vh;
+  }
+
+body {
+  background-color: #051236;
   background-image: linear-gradient(var(--dBlue), var(--darkBlue));
-  color: white;
+  font-family: "basement";
   text-align: center;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-    --darkBlue: #000d18;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+  --darkBlue: #000d18;
   --pink: #f280cf;
   --purple: #8e60ac;
   --green: #20ab44;
@@ -14,17 +35,13 @@ body {
   --blue: #6688cc;
   --lightBlue: #3794ff;
 }
-body::-webkit-scrollbar {
-  display: none;
-}
-
 .ball {
   width: 50px;
   height: 50px;
   position: fixed;
   top: 0;
   left: 0;
-  border: 3px solid dodgerblue;
+  border: 3px solid var(--pink);
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
@@ -55,60 +72,4 @@ nav {
   color: var(--pink);
   transform: translateY(-2px);
   box-shadow: 8px 8px 20px #090c10, -8px -8px 20px #252e42;
-}
-
-main {
-  border: 2px red solid;
-
-}
-#title{
-  font-size: 6rem;
-}
-.movies{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-.card{
-    border: 2px white solid;
-    margin: 2vh 0vw;
-    width: 25rem;
-}
-img{
-  margin-top: 1vh;
-  height: 35rem;
-}
-h5{
-  margin-top: 1vh;
-  font-size: 2rem;
-}
-.card-text{
-  display: flex;
-  flex-direction: column;
-  margin-top: -4vh;
-  border: 1px red solid;
-  font-size: 1.6rem;
-}
-p{
-  margin-top: 0;
-}
-
-.delete{
-  background-color: red;
-  width: 2vw;
-  height: 2vh;
-  border-radius: 15px;
-  position:absolute;
-  right:5px;
-  top: 5px
-}
-form{
-  font-size: 2.5rem;
-}
-form input{
-  font-size: 2rem;
-}
-form select{
-  font-size: 2rem;
 }
