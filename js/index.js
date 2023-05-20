@@ -29,6 +29,7 @@ gsap.to("text.circles__text--2", {
 
 // Function to run the animation once the page loads
 function animation() {
+  let buttons = document.querySelector(".buttons")
   gsap.set("#submit", { y: "100%", opacity: 0 });
   gsap.set("#pick", { y: "100%", opacity: 0 });
   gsap.set("#edit", { y: "100%", opacity: 0 });
@@ -36,6 +37,7 @@ function animation() {
 
   // Animation timeline
   var tl = gsap.timeline();
+  buttons.style.display = "flex"
   // buttons
   tl.from("#submit", { opacity: 0});
   tl.to("#submit", { y: 0, opacity: 1, duration: 0.5, ease: "power4.out" });

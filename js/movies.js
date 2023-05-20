@@ -17,7 +17,7 @@ function shuffle(sourceArray) {
 const displayCard = (res) => {
    // Get the response data
    const data = shuffle(res.data);
-   console.log(data[0])
+
    for (let i = 0; i < data.length; i++) {
      let id = data[i].movie_id
      let title = data[i].movie_title;

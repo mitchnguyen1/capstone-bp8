@@ -88,53 +88,61 @@ module.exports = {
   },
   submitMovie: (req, res) => {
     const { movie_title, movie_year, movie_genre } = req.body;
-    //get the length of rows for ID
+  
     sequelize
-      .query(
-        `
-      SELECT * FROM movie
-    `
-      )
+      .query(`SELECT * FROM movie`)
       .then((dbRes) => {
         let id = dbRes[0].length + 1;
-        // query themoviedb for the movie
+  
         axios
-          .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movie_title}`
-          )
+          .get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movie_title}`)
           .then((response) => {
             const { title, poster_path } = response.data.results[0];
-
+  
             let query = `
-        INSERT INTO movie (movie_id, movie_title, movie_year, movie_img) 
-        VALUES (${id},'${title}', ${movie_year}, '${poster_path}');
-
-        SELECT movie_id FROM movie 
-        WHERE movie_img = '${poster_path}'
-      `;
-
+              INSERT INTO movie (movie_id, movie_title, movie_year, movie_img) 
+              VALUES (${id}, '${title}', ${movie_year}, '${poster_path}');
+              
+              SELECT movie_id FROM movie 
+              WHERE movie_img = '${poster_path}';
+            `;
+  
             sequelize
               .query(query)
               .then((dbRes) => {
+                const {movie_id} = dbRes[0][0]
                 sequelize.query(`
-            INSERT INTO movie_genre (movie_id, genre_id)
-            VALUES (${dbRes[0][0].movie_id}, ${movie_genre});
-          `);
+                  INSERT INTO movie_genre (movie_id, genre_id)
+                  VALUES (${movie_id}, ${movie_genre});
+                  
+                  SELECT m.movie_title,m.movie_img, g.genre
+                  FROM movie m
+                  JOIN movie_genre mg ON m.movie_id = mg.movie_id
+                  JOIN genre g ON mg.genre_id = g.genre_id  
+                  WHERE m.movie_id = ${movie_id};
+                `).then((dbRes) => {
+                  res.status(200).send(dbRes[0]);
+                }).catch((error) => {
+                  console.error("Failed to fetch movie data from the database:", error);
+                  res.status(500).send("Internal Server Error");
+                });
               })
               .catch((error) => {
-                console.error(
-                  "Failed to insert data into movie_genre table:",
-                  error
-                );
+                console.error("Failed to insert data into movie_genre table:", error);
+                res.status(500).send("Internal Server Error");
               });
           })
           .catch((error) => {
             console.error("Failed to fetch movie data from themoviedb:", error);
+            res.status(500).send("Internal Server Error");
           });
-
-        res.status(200).send("success");
+      })
+      .catch((error) => {
+        console.error("Failed to fetch data from the database:", error);
+        res.status(500).send("Internal Server Error");
       });
   },
+  
   randomMovie: (req, res) => {
     const { movie_genre, movie_year } = req.query;
     console.log(req.query);

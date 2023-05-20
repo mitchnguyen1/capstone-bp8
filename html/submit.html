@@ -63,27 +63,34 @@
     </nav>
 
     <div class="ball"></div>
-    <section>
-      <h1 id="title">Submit a Movie</h1>
-      <form>
-        <label for="movieTitle">Title:</label>
-        <input type="text" id="movieTitle" name="movieTitle" />
-        <label for="movieGenre">Genre:</label>
-        <select name="movieGenre" id="movieGenre">
-          <option value="28">Action</option>
-          <option value="12">Adventure</option>
-          <option value="35">Comedy</option>
-          <option value="18">Drama</option>
-          <option value="14">Fantasy</option>
-          <option value="27">Horror</option>
-          <option value="53">Thriller</option>
-        </select>
-        <label for="movieYear">Year:</label>
-        <input type="number" id="movieYear" name="movieYear min="1900"
-        max="2023" step="1" value="2000"/>
-        <input type="submit" id="submit" />
-      </form>
-    </section>
+
+    <main>
+      <section class="submit">
+        <h1 id="title">Submit A Movie</h1>
+        <form>
+          <label for="movieTitle">Title:</label>
+          <input type="text" id="movieTitle" name="movieTitle" />
+          <label for="movieGenre">Genre:</label>
+          <select name="movieGenre" id="movieGenre">
+            <option value="28">Action</option>
+            <option value="12">Adventure</option>
+            <option value="35">Comedy</option>
+            <option value="18">Drama</option>
+            <option value="14">Fantasy</option>
+            <option value="27">Horror</option>
+            <option value="53">Thriller</option>
+          </select>
+          <label for="movieYear">Year:</label>
+          <input type="number" id="movieYear" name="movieYear min="1900"
+          max="2023" step="1" value="2000"/>
+          <input type="submit" id="submit" />
+        </form>
+      </section>
+  
+      <section class="movies"></section>
+     
+    </main>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
