@@ -7,15 +7,7 @@ body {
   font-family: "Basement";
   src: url(../images/BasementGrotesque-Black_v1.202.otf);
 }
-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 4vw; 
-    margin-top: -5vh;
-  }
+
 
 body {
   background-color: #051236;
@@ -72,4 +64,98 @@ nav {
   color: var(--pink);
   transform: translateY(-2px);
   box-shadow: 8px 8px 20px #090c10, -8px -8px 20px #252e42;
+}
+main {
+  background-color: var(--background);
+  width: 100%;
+  height: 100%;
+  margin-top: -5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.right {
+  width: 50%;
+  height: 100%;
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.tab{
+  background-color: var(--background);
+  width: 50%;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #3c375d;
+  box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
+}
+
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-bottom: 0;
+}
+.bar {
+  height: auto;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  background-color: var(--grey);
+  display: flex;
+  align-items: start;
+}
+.tinyButtons {
+  margin-left: 0.5vw;
+}
+#red,
+#yellow,
+#green {
+  height: 1.5vh;
+  border-radius: 50%;
+  margin: 0.8vh 0.15vw;
+}
+
+.card {
+  max-width: 40%;
+  max-height: 80%;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.card img {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 40px !important;
+  padding-top: 1vh
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+.card-text {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0vh;
+  font-size: 1rem;
 }
