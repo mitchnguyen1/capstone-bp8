@@ -34,6 +34,7 @@ body {
   --grey: #171d29;
   --blue: #6688cc;
   --lightBlue: #3794ff;
+  --background: #3c375d;
 }
 .ball {
   width: 50px;
@@ -76,12 +77,11 @@ nav {
 
 
 .submit {
-  background-color: var(--grey);
+  background-color: var(--background);
   width: 50%;
   text-align: center;
   border-radius: 20px;
   border: 1px solid rgba(128, 128, 128, 0.442);
-  background: #262433;
   box-shadow: 0px 0px 22px -6px rgba(102,136,204,1);
 }
 .bar{

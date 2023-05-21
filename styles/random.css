@@ -111,7 +111,7 @@ section {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.genre-button {
+.genre-button,.submit,.all-button {
   margin: 1vh 1vw;
   color: white;
   font-size: 3vh;
@@ -146,7 +146,7 @@ section {
   top:50%;
   right:15%;
   transform: translate(15%,-50%);
-  width: max-content;
+  width: 25rem;
   
 
   border-radius: 64px;
@@ -158,9 +158,10 @@ section {
   box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
 }
 img {
-  height: 35rem;
   border-radius: 40px !important;
-  padding: 1.5vh 1.5vw;
+  margin-top: 1vh;
+  max-height: 35rem;
+  padding: 2vh 1vw;
 }
 
 h5 {

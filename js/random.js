@@ -1,15 +1,49 @@
-let form = document.querySelector("form");
-let movieDisplay = document.querySelector(".movies")
+// Get all elements in the DOM
+let movieDisplay = document.querySelector(".movies");
+let genres = document.querySelectorAll(".genre-button");
+let years = document.querySelectorAll(".year-button");
+let submit = document.querySelectorAll(".submit");
+let yearSelection = [];
+let genreSelection = [];
 
 const displayCard = (res) => {
-  movieDisplay.innerHTML=""
-  console.log(res)
-  const{movie_img, genre, movie_title, movie_year} = res
+  movieDisplay.innerHTML = "";
+
+  const { movie_img, genre, movie_title, movie_year } = res;
+  if(yearSelection[0] !== movie_year){
+    alert(`Sorry, there was no match with your criteria. Here's a random ${genre} movie`)
+  }
 
   // Create a bootstrap card element
   let card = document.createElement("div");
   card.setAttribute("class", "card");
+  let bar = document.createElement("div");
+  bar.setAttribute("class", "bar");
 
+  let tinyButtons = document.createElement("div");
+  tinyButtons.setAttribute("class", "tinyButtons");
+
+  let colors = { red: "#FF605C", yellow: "#FFBD44", green: "#00CA4E" };
+  for (let color in colors) {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("id", color);
+    svg.setAttribute("viewBox", "0 0 100 100");
+
+    let circle = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle.setAttribute("cx", "50");
+    circle.setAttribute("cy", "50");
+    circle.setAttribute("r", "50");
+    circle.setAttribute("fill", colors[color]);
+
+    svg.appendChild(circle);
+    tinyButtons.appendChild(svg);
+  }
+
+  bar.appendChild(tinyButtons);
+  card.appendChild(bar);
 
   // Create an image element and append it to the card
   let image = document.createElement("img");
@@ -43,39 +77,126 @@ const displayCard = (res) => {
 
   // Add the card to the movie display
   movieDisplay.appendChild(card);
+  yearSelection = [];
+  genreSelection = [];
 };
+
+//handle year selection
+const addYear = (e) => {
+  let button = e.target;
+  let value = +button.value;
+  let index = yearSelection.indexOf(value);
+  //the year isn't selected yet
+  if (index === -1) {
+    button.classList.add("purple");
+    button.classList.add("clicked");
+    yearSelection.push(value);
+  } else {
+    button.classList.remove("purple");
+    button.classList.remove("clicked");
+    yearSelection.splice(index, 1);
+  }
+};
+
+years.forEach((year) => {
+  year.addEventListener("click", addYear);
+});
+
+//handle genre selection
+const addGenre = (e) => {
+  let button = e.target;
+  let value = button.value;
+  let index = genreSelection.indexOf(value);
+
+  if (index === -1) {
+    button.classList.add("pink");
+    button.classList.add("clicked");
+    genreSelection.push(value);
+  } else {
+    button.classList.remove("pink");
+    button.classList.remove("clicked");
+    genreSelection.splice(index, 1);
+  }
+};
+
+genres.forEach((genre) => {
+  genre.addEventListener("click", addGenre);
+});
 
 const randomMovie = (e) => {
-  e.preventDefault();
-  let genre = document.querySelector("#movieGenre").value;
-  let year = document.querySelector("#movieYear").value;
-  let body = {
-    movie_genre: genre,
-    movie_year: year,
-  };
-  console.log(body);
-  axios
-    .get(
-      `http://localhost:4000/api/randomMovie?movie_genre=${genre}&movie_year=${year}`
-    )
-    .then((res) => {
-      const{movie_year} = res.data[0]
-      let moviesLength = res.data.length
-      let randomNum = Math.floor(Math.random() * moviesLength)
-      if(movie_year != year){
-        alert(`Movie not found in that year, heres a movie with the genre: ${genre}`)
-        displayCard(res.data[randomNum])
+  if (yearSelection.length == 0 && genreSelection.length == 0) {
+    alert("Please pick one");
+  } else {
+    let url = "http://localhost:4000/api/randomMovie?";
+    let genreInLink = false;
+    if (genreSelection.length === 1) {
+      url += `movie_genre=${genreSelection[0]}`;
+      genreInLink = true;
+    } else if (genreSelection.length > 1) {
+      url += `movie_genre=${genreSelection[0]}`;
+      genreInLink = true;
+      for (let i = 1; i < genreSelection.length; i++) {
+        url += `&movie_genre=${genreSelection[i]}`;
       }
-      else{
-        displayCard(res.data[randomNum])
+    }
+    if (!genreInLink) {
+      if (yearSelection.length === 1) {
+        url += `movie_year=${yearSelection[0]}`;
+      } else if (yearSelection.length > 1) {
+        url += `movie_year=${yearSelection[0]}`;
+        for (let i = 1; i < yearSelection.length; i++) {
+          url += `&movie_year=${yearSelection[i]}`;
+        }
       }
-    })
-    .catch((err) => {
-      console.log(err);
-      alert("Uh oh. not working....");
+    } else {
+      if (yearSelection.length === 1) {
+        url += `&movie_year=${yearSelection[0]}`;
+      } else if (yearSelection.length > 1) {
+        url += `&movie_year=${yearSelection[0]}`;
+        for (let i = 1; i < yearSelection.length; i++) {
+          url += `&movie_year=${yearSelection[i]}`;
+        }
+      }
+    }
+
+    // reset classes from each element
+    years.forEach((year) => {
+      if (
+        year.classList.contains("purple") ||
+        year.classList.contains("pink") ||
+        year.classList.contains("clicked")
+      ) {
+        year.classList.remove("purple");
+        year.classList.remove("pink");
+        year.classList.remove("clicked");
+      }
     });
+    genres.forEach((genre) => {
+      if (
+        genre.classList.contains("purple") ||
+        genre.classList.contains("pink") ||
+        genre.classList.contains("clicked")
+      ) {
+        genre.classList.remove("purple");
+        genre.classList.remove("pink");
+        genre.classList.remove("clicked");
+      }
+    });
+
+    axios
+      .get(url)
+      .then((res) => {
+        let randomNum = Math.floor(Math.random() * res.data.length);
+        displayCard(res.data[randomNum]);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Uh oh. Something went wrong...");
+      });
+  }
+
 };
 
-form.addEventListener("submit", randomMovie);
-
-
+submit.forEach((button) => {
+  button.addEventListener("click", randomMovie);
+});

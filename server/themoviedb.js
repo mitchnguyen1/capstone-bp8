@@ -32,7 +32,7 @@ module.exports = {
           if (genres[movies[i].genre_ids[0]] == undefined) {
             continue;
           } else {
-            let movieTitle = movies[i].original_title.replace("'", '"');
+            let movieTitle = movies[i].original_title.replace("'", "''");
             let outline = {
               id: movie_id,
               movie_title: movieTitle,

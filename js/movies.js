@@ -1,5 +1,6 @@
 const movieDisplay = document.querySelector(".movies");
 
+
 //function to shuffle the movies
 function shuffle(sourceArray) {
   for (var i = 0; i < sourceArray.length - 1; i++) {
@@ -16,7 +17,7 @@ function shuffle(sourceArray) {
 //function to display movies
 const displayCard = (res) => {
    // Get the response data
-   const data = shuffle(res.data);
+   const data = res.data;
 
    for (let i = 0; i < data.length; i++) {
      let id = data[i].movie_id
@@ -28,13 +29,40 @@ const displayCard = (res) => {
      // Create a bootstrap card element
      let card = document.createElement("div");
      card.setAttribute("class", "card");
+     card.setAttribute("id", `${id}`);
 
-     //create a delete button
-     let deleteBtn = document.createElement("button")
-     deleteBtn.setAttribute("class","delete")
-     deleteBtn.innerHTML="X"
-     deleteBtn.setAttribute("onClick", `deleteMovie(${id})`);
-     card.appendChild(deleteBtn)
+     let bar = document.createElement("div");
+     bar.setAttribute("class", "bar");
+   
+     let tinyButtons = document.createElement("div");
+     tinyButtons.setAttribute("class", "tinyButtons");
+   
+     let colors = { red: "#FF605C", yellow: "#FFBD44", green: "#00CA4E" };
+     for (let color in colors) {
+       let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+       svg.setAttribute("id", color);
+       svg.setAttribute("viewBox", "0 0 100 100");
+   
+       //delete button 
+       if(color == 'red'){
+        svg.setAttribute("onclick","deleteMovie(this.parentElement.parentElement.parentElement.id)")
+       }
+
+       let circle = document.createElementNS(
+         "http://www.w3.org/2000/svg",
+         "circle"
+       );
+       circle.setAttribute("cx", "50");
+       circle.setAttribute("cy", "50");
+       circle.setAttribute("r", "50");
+       circle.setAttribute("fill", colors[color]);
+   
+       svg.appendChild(circle);
+       tinyButtons.appendChild(svg);
+     }
+   
+     bar.appendChild(tinyButtons);
+     card.appendChild(bar);   
 
      // Create an image element and append it to the card
      let image = document.createElement("img");

@@ -1,18 +1,20 @@
-const seed = () => {
-  const data = {
-    key: "value", // Replace "key" and "value" with your actual data
-  };
+let logo = document.querySelector("#X")
 
+const seed = () => {
+  console.log(1)
   axios
-    .post("http://localhost:4000/api/seed", data)
+    .post("http://localhost:4000/api/seed")
     .then(function (response) {
-      console.log("POST request successful", response);
+      alert("Seed successful", response);
     })
     .catch(function (error) {
       console.error("POST request failed", error);
     });
 };
 
+logo.addEventListener("click",seed)
+
+//logo
 gsap.set("text.circles__text", { transformOrigin: "50% 50%" });
 gsap.to("text.circles__text--1", {
   duration: 50,
@@ -26,6 +28,7 @@ gsap.to("text.circles__text--2", {
   rotation: "-=360",
   repeat: -1,
 });
+
 
 // Function to run the animation once the page loads
 function animation() {
@@ -56,6 +59,5 @@ function animation() {
 
 // Run the animation once the page finishes loading
 window.addEventListener("load", function () {
-  //seed();
   animation();
 });
