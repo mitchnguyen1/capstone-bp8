@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {SERVER_PORT} = process.env
-const {seed, getAllMovies, deleteMovie, submitMovie, randomMovie, updateMovie} = require('./controller.js')
+const {seed, getAllMovies, deleteMovie, submitMovie, randomMovie, updateMovie,findById} = require('./controller.js')
  
 app.use(express.static(`${__dirname}/../html`))
 app.use(express.json())
@@ -21,6 +21,7 @@ app.post('/api/submitMovie', submitMovie)
 app.get('/api/randomMovie/',randomMovie)
 //put to update a movie
 app.put('/api/updateMovie', updateMovie)
-
+//find by id
+app.get('/api/getByID/:id',findById)
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))

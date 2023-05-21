@@ -90,35 +90,17 @@
               </svg>
             </div>
           </div>
+          <div class="selection">
+
           <label for="movie">Select a movie:</label>
           <select name="movie" id="movie">
-            <option value="68">2012</option>
+            <option value="1">American Psycho</option>
           </select>
+          </div>
         </div>
 
         <div class="card tab">
-          <div class="bar">
-            <div class="tinyButtons">
-              <svg id="red" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="50" fill="#FF605C"></circle></svg
-              ><svg id="yellow" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="50" fill="#FFBD44"></circle></svg
-              ><svg id="green" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="50" fill="#00CA4E"></circle>
-              </svg>
-            </div>
-          </div>
-          <img
-            class="card-img-top"
-            src="https://image.tmdb.org/t/p/original/kyuXWPU7KLGD6yIfhCVk59LF0KN.jpg"
-          />
-          <div class="card-body">
-            <h5 class="card-title">In Time</h5>
-            <div class="card-text">
-              <p>Year: 2011</p>
-              <p>Genre: Action</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -150,10 +132,13 @@
             </div>
           </div>
           <form>
-            <label for="movieTitle">Title:</label>
+            <div class="title">
+              <label for="movieTitle">Title:</label>
             <input type="text" id="movieTitle" name="movieTitle" />
+            </div>
 
-            <label for="movieGenre">Genre:</label>
+            <div class="genre">
+              <label for="movieGenre">Genre:</label>
             <select name="movieGenre" id="movieGenre">
               <option value="28">Action</option>
               <option value="12">Adventure</option>
@@ -164,10 +149,13 @@
               <option value="53">Thriller</option>
             </select>
 
-            <label for="movieYear">Year:</label>
+            </div>
+            <div class="year">
+              <label for="movieYear">Year:</label>
             <input type="number" id="movieYear" name="movieYear min="1900"
             max="2030" step="1" value="2000"/>
 
+            </div>
             <input type="submit" id="submit" value="Update" />
           </form>
         </div>
