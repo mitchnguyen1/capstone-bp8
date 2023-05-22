@@ -101,17 +101,19 @@ section {
   margin: 0.8vh 0.15vw;
 }
 
-.title{
+.title {
   margin-top: 1vh;
 }
-.Buttons{
-  margin-bottom:2vh;
+.Buttons {
+  margin-bottom: 2vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-.genre-button,.submit,.all-button {
+.genre-button,
+.submit,
+.all-button {
   margin: 1vh 1vw;
   color: white;
   font-size: 3vh;
@@ -119,7 +121,7 @@ section {
   background: linear-gradient(145deg, #403b64, #363254);
   box-shadow: 5px 5px 10px #1e1c2f, -5px -5px 10px #5a538c;
 }
-.year-button{
+.year-button {
   margin: 0.5vh 0.5vw;
   color: white;
   font-size: 2.5vh;
@@ -133,19 +135,19 @@ section {
   background: #3c375d;
   box-shadow: inset 5px 5px 10px #1e1c2f, inset -5px -5px 10px #5a538c;
 }
-.purple{
+.purple {
   color: var(--purple);
 }
 
-.pink{
+.pink {
   color: var(--pink);
 }
 
 .card {
-  position:absolute;
-  top:50%;
-  right:15%;
-  transform: translate(15%,-50%);
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translate(15%, -50%);
   width: 25rem;
   height: auto;
   margin-top: 2vh;
@@ -176,14 +178,14 @@ h5 {
   margin-top: 0vh;
   font-size: 1.6rem;
 }
-#randomBall{
+#randomBall {
   display: block;
   width: 240px;
   height: 240px;
-  position:absolute;
-  top:50%;
-  right:18%;
-  transform: translate(18%,-50%);
+  position: absolute;
+  top: 50%;
+  right: 18%;
+  transform: translate(18%, -50%);
 }
 /* page transition */
 #fader {
@@ -199,12 +201,43 @@ h5 {
   animation-timing-function: ease-in-out;
 }
 @keyframes fade-out {
-from { opacity: 1 }
-  to { opacity: 0 }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-
 #fader.fade-out {
-opacity: 0;
-animation-name: fade-out;
+  opacity: 0;
+  animation-name: fade-out;
+}
+
+.alert {
+  z-index: 999;
+  display: none;
+  width: 20%;
+  height: max-content;
+  padding: 0;
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, 35%);
+  border: 1px solid rgba(128, 128, 128, 0.442);
+  background: #3c375d;
+  box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
+}
+#alertText {
+  margin: 1vh 1vw;
+}
+#confirm {
+  margin-bottom: 1vh;
+  color: white;
+  font-size: 1.5vh;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #403b64, #363254);
+  box-shadow: 5px 5px 10px #1e1c2f, -5px -5px 10px #5a538c;
 }

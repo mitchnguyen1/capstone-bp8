@@ -3,15 +3,16 @@ let movieDisplay = document.querySelector(".movies");
 let genres = document.querySelectorAll(".genre-button");
 let years = document.querySelectorAll(".year-button");
 let submit = document.querySelectorAll(".submit");
-let randomBall = document.querySelector("#randomBall")
+let randomBall = document.querySelector("#randomBall");
+let alertBox = document.querySelector(".alert");
 let yearSelection = [];
 let genreSelection = [];
 
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
   const { movie_img, genre, movie_title, movie_year } = res;
-  if(!yearSelection.includes(movie_year) && yearSelection.length != 0){
-    alert(`Sorry, there was no match with your criteria. Here's a random ${genre} movie`)
+  if (!yearSelection.includes(movie_year) && yearSelection.length != 0) {
+    createAlert(genre)
   }
 
   // Create a bootstrap card element
@@ -37,9 +38,9 @@ const displayCard = (res) => {
     circle.setAttribute("cy", "50");
     circle.setAttribute("r", "50");
     circle.setAttribute("fill", colors[color]);
-    
-    if(color == "red"){
-      svg.setAttribute("onclick", "closeCard()")
+
+    if (color == "red") {
+      svg.setAttribute("onclick", "closeCard()");
     }
 
     svg.appendChild(circle);
@@ -198,39 +199,93 @@ const randomMovie = (e) => {
         alert("Uh oh. Something went wrong...");
       });
   }
-
 };
 
 const randomBallMovie = () => {
-  axios.get("http://localhost:4000/api/getAllMovies")
-  .then(res => {
-    let length = res.data.length
-    let num = Math.floor(Math.random() * length)
-    let movie = res.data[num]
-    yearSelection.push(movie.movie_year)
-    displayCard(movie)
-    randomBall.style.display - "none"
-  })
-}
+  axios.get("http://localhost:4000/api/getAllMovies").then((res) => {
+    let length = res.data.length;
+    let num = Math.floor(Math.random() * length);
+    let movie = res.data[num];
+    yearSelection.push(movie.movie_year);
+    displayCard(movie);
+    randomBall.style.display - "none";
+  });
+};
 
 const closeCard = () => {
-  movieDisplay.innerHTML = ""
-  let img = document.createElement("img")
-  img.setAttribute("id","randomBall")
-  img.setAttribute("src","../images/trippy.gif")
-  img.setAttribute("onclick","randomBallMovie()")
-  movieDisplay.appendChild(img)
-}
+  movieDisplay.innerHTML = "";
+  let img = document.createElement("img");
+  img.setAttribute("id", "randomBall");
+  img.setAttribute("src", "../images/trippy.gif");
+  img.setAttribute("onclick", "randomBallMovie()");
+  movieDisplay.appendChild(img);
+};
 
 submit.forEach((button) => {
   button.addEventListener("click", randomMovie);
 });
 
+//create and close alert function
+const createAlert = (genre) => {
+  alertBox.innerHTML = ""
+  let bar = document.createElement("div");
+  bar.setAttribute("class", "bar");
+
+  let tinyButtons = document.createElement("div");
+  tinyButtons.setAttribute("class", "tinyButtons");
+
+  let colors = { red: "#FF605C", yellow: "#FFBD44", green: "#00CA4E" };
+  for (let color in colors) {
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("id", color);
+    svg.setAttribute("viewBox", "0 0 100 100");
+
+    let circle = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "circle"
+    );
+    circle.setAttribute("cx", "50");
+    circle.setAttribute("cy", "50");
+    circle.setAttribute("r", "50");
+    circle.setAttribute("fill", colors[color]);
+
+    if (color == "red") {
+      svg.setAttribute("onclick", "closeAlert()");
+    }
+
+    svg.appendChild(circle);
+    tinyButtons.appendChild(svg);
+  }
+
+  bar.appendChild(tinyButtons);
+  alertBox.appendChild(bar);
+
+  let text = document.createElement("h6")
+  text.setAttribute("id","alertText")
+  text.textContent=`Sorry, there was no match with your criteria. Here's a random ${genre} movie`
+  alertBox.appendChild(text)
+
+  let button = document.createElement("button")
+  button.setAttribute("id","confirm")
+  button.setAttribute("onclick","closeAlert()")
+  button.innerHTML="Ok"
+  alertBox.appendChild(button)
+
+  alertBox.style.display = "block"
+};
+
+const closeAlert = () => {
+  alertBox.innerHTML = ""
+  alertBox.style.display = "none"
+}
+
 //fading animation
 const fadeOutPage = () => {
-  if (!window.AnimationEvent) { return; }
-  fader.classList.add('fade-out');
-}
+  if (!window.AnimationEvent) {
+    return;
+  }
+  fader.classList.add("fade-out");
+};
 
 // Run the animation once the page finishes loading
 window.addEventListener("load", function () {
