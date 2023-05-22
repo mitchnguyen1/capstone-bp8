@@ -79,7 +79,6 @@ main {
 .left {
   width: 50%;
   height: 100%;
-  border: 2px solid green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +89,6 @@ main {
 .right {
   width: 50%;
   height: 100%;
-  border: 2px solid green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,12 +108,7 @@ main {
 }
 
 
-.card-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding-bottom: 0;
-}
+
 .bar {
   height: auto;
   width: 100%;
@@ -153,6 +146,12 @@ main {
 
 h5 {
   font-size: 1.5rem;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-bottom: 0;
 }
 .card-text {
   display: flex;

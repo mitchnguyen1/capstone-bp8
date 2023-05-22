@@ -14,7 +14,7 @@ body {
   font-family: "basement";
   text-align: center;
   height: 100%;
-  overflow: hidden;
+  
   color: white;
   --darkBlue: #000d18;
   --pink: #f280cf;
@@ -147,7 +147,7 @@ section {
   right:15%;
   transform: translate(15%,-50%);
   width: 25rem;
-  max-height: 80%;
+  height: auto;
   margin-top: 2vh;
   border-radius: 64px;
   display: flex;
@@ -160,18 +160,28 @@ section {
   box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
 }
 .card img {
-  max-width: 65%;
-  max-height: 75%;
-  border-radius: 40px !important;
-  padding-top: 1vh
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px !important;
+  padding-top: 1vh;
+  margin: 0 auto;
 }
 
 h5 {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
 }
 .card-text {
   display: flex;
   flex-direction: column;
   margin-top: 0vh;
-  font-size: 1rem;
+  font-size: 1.6rem;
+}
+#randomBall{
+  display: block;
+  width: 240px;
+  height: 240px;
+  position:absolute;
+  top:50%;
+  right:18%;
+  transform: translate(18%,-50%);
 }

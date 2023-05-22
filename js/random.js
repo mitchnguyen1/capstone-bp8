@@ -3,14 +3,14 @@ let movieDisplay = document.querySelector(".movies");
 let genres = document.querySelectorAll(".genre-button");
 let years = document.querySelectorAll(".year-button");
 let submit = document.querySelectorAll(".submit");
+let randomBall = document.querySelector("#randomBall")
 let yearSelection = [];
 let genreSelection = [];
 
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
-
   const { movie_img, genre, movie_title, movie_year } = res;
-  if(yearSelection[0] !== movie_year){
+  if(!yearSelection.includes(movie_year) && yearSelection.length != 0){
     alert(`Sorry, there was no match with your criteria. Here's a random ${genre} movie`)
   }
 
@@ -37,6 +37,10 @@ const displayCard = (res) => {
     circle.setAttribute("cy", "50");
     circle.setAttribute("r", "50");
     circle.setAttribute("fill", colors[color]);
+    
+    if(color == "red"){
+      svg.setAttribute("onclick", "closeCard()")
+    }
 
     svg.appendChild(circle);
     tinyButtons.appendChild(svg);
@@ -196,6 +200,27 @@ const randomMovie = (e) => {
   }
 
 };
+
+const randomBallMovie = () => {
+  axios.get("http://localhost:4000/api/getAllMovies")
+  .then(res => {
+    let length = res.data.length
+    let num = Math.floor(Math.random() * length)
+    let movie = res.data[num]
+    yearSelection.push(movie.movie_year)
+    displayCard(movie)
+    randomBall.style.display - "none"
+  })
+}
+
+const closeCard = () => {
+  movieDisplay.innerHTML = ""
+  let img = document.createElement("img")
+  img.setAttribute("id","randomBall")
+  img.setAttribute("src","../images/trippy.gif")
+  img.setAttribute("onclick","randomBallMovie()")
+  movieDisplay.appendChild(img)
+}
 
 submit.forEach((button) => {
   button.addEventListener("click", randomMovie);

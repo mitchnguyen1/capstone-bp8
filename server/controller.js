@@ -134,10 +134,10 @@ module.exports = {
     //The user only picks an array of genre. - passed
     // The user only picks an array of years.-passed
     // The user picks an array of genre and years.-passed
-    // The user only picks one year.-failed
-    // The user only picks one genre.-falled
-    // The user only picks an array of genre and one year.-falled, year not added
-    // The user only picks an array of years and one genre.-failed, genre not added
+    // The user only picks one year.-passed
+    // The user only picks one genre.-passed
+    // The user only picks an array of genre and one year.-passed
+    // The user only picks an array of years and one genre.-passed
     const { movie_genre, movie_year } = req.query;
 
     let genreQuery = "";

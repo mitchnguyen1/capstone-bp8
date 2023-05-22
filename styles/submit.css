@@ -10,10 +10,9 @@ body {
 main {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
-  gap: 4vw;
   margin-top: -5vh;
 }
 
@@ -142,10 +141,12 @@ select {
   font-size: 3.5rem;
 }
 .movies {
-  display:block;
-  /* display: none; */
+  /* display:block; */
+  display: none;
 }
 .card {
+  width: 25vw;
+  height: auto;
   margin: 1vh 1vw;
   border-radius: 64px;
   color: white;
@@ -155,9 +156,11 @@ select {
   box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
 }
 img {
-  height: 35rem;
-  border-radius: 40px !important;
-  padding: 2vh 1.5vw;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 20px !important;
+  padding-top: 1vh;
+  margin: 0 auto;
 }
 h5 {
   font-size: 2.5rem;

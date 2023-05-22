@@ -15,7 +15,7 @@ const dropboxMovieOptions = () => {
       let option = document.createElement("option");
       option.setAttribute("value", res.data[i].movie_id);
       option.innerHTML = `${res.data[i].movie_title}`;
-      selectBox.appendChild(option);
+      movieSelection.appendChild(option);
     }
   });
 };
