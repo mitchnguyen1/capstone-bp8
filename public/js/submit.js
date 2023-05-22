@@ -1,6 +1,6 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".movies");
-
+let baseUrl = "http://54.190.34.112"
 const submitMovie = (e) => {
   e.preventDefault();
   let title = document.querySelector("#movieTitle").value;
@@ -12,7 +12,7 @@ const submitMovie = (e) => {
     movie_year: year,
   };
   axios
-    .post("http://localhost:4000/api/submitMovie", body)
+    .post(`${baseUrl}/api/submitMovie`, body)
     .then((res) => {
       let { movie_title, movie_img, genre } = res.data[res.data.length - 1];
       movieDisplay.innerHTML = "";

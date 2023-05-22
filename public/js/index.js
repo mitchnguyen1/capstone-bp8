@@ -1,9 +1,9 @@
 let logo = document.querySelector("#X")
-
+let baseUrl = "http://54.190.34.112"
 const seed = () => {
   console.log(1)
   axios
-    .post("http://localhost:4000/api/seed")
+    .post(`${baseUrl}/api/seed`)
     .then(function (response) {
       alert("Seed successful", response);
     })

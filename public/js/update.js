@@ -1,10 +1,10 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".card");
 let movieSelection = document.querySelector("#movie");
-
+let baseUrl = "http://54.190.34.112"
 //make a get request for all movies
 const dropboxMovieOptions = () => {
-  axios.get("http://localhost:4000/api/getAllMovies").then((res) => {
+  axios.get(`${baseUrl}/api/getAllMovies`).then((res) => {
     //sort alphabetically
     res.data.sort(function (a, b) {
       var textA = a.movie_title.toUpperCase();
@@ -19,14 +19,14 @@ const dropboxMovieOptions = () => {
     }
     // set the initial poster
     let id = movieSelection.options[0].value;
-    axios.get(`http://localhost:4000/api/getByID/${id}`).then((res) => {
+    axios.get(`${baseUrl}/api/getByID/${id}`).then((res) => {
       displayCard(res);
     });
   });
 };
 //delete request for button
 const deleteMovie = (id) => {
-  axios.delete(`http://localhost:4000/api/deleteMovie/${id}`).then((res) => {
+  axios.delete(`${baseUrl}/api/deleteMovie/${id}`).then((res) => {
     location.reload();
   });
 };
@@ -118,7 +118,7 @@ const updateMovie = (e) => {
     movie_year: year,
     genre: genre,
   };
-  axios.put("http://localhost:4000/api/updateMovie", body).then((res) => {
+  axios.put(`${baseUrl}/api/updateMovie`, body).then((res) => {
     //display the updated movie
     displayCard(res);
     let genreInput = document.querySelector("#movieGenre");
@@ -134,7 +134,7 @@ const movieCard = (e) => {
   e.preventDefault()
   let id = e.target.value;
   axios
-    .get(`http://localhost:4000/api/getByID/${id}`)
+    .get(`${baseUrl}/api/getByID/${id}`)
     .then((res) => {
       displayCard(res);
     })

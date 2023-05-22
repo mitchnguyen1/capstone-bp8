@@ -1,5 +1,5 @@
 const movieDisplay = document.querySelector(".movies");
-
+let baseUrl = "http://54.190.34.112"
 
 //function to shuffle the movies
 function shuffle(sourceArray) {
@@ -131,7 +131,7 @@ const displayCard = (res) => {
 //get request every time a user loads the page and call the display function
 const display = () => {
   axios
-  .get("http://localhost:4000/api/getAllMovies")
+  .get(`${baseUrl}/api/getAllMovies`)
   .then((res) => {
     displayCard(res)
   })
@@ -143,7 +143,7 @@ const display = () => {
 
   //delete request for button
   const deleteMovie = (id) =>{
-    axios.delete(`http://localhost:4000/api/deleteMovie/${id}`)
+    axios.delete(`${baseUrl}/api/deleteMovie/${id}`)
     .then((res) => {
       location.reload()
     })

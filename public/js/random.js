@@ -7,7 +7,7 @@ let randomBall = document.querySelector("#randomBall");
 let alertBox = document.querySelector(".alert");
 let yearSelection = [];
 let genreSelection = [];
-
+let baseUrl = "http://54.190.34.112"
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
   const { movie_img, genre, movie_title, movie_year } = res;
@@ -132,7 +132,7 @@ const randomMovie = (e) => {
   if (yearSelection.length == 0 && genreSelection.length == 0) {
     alert("Please pick one");
   } else {
-    let url = "http://localhost:4000/api/randomMovie?";
+    let url = `${baseUrl}/api/randomMovie?`;
     let genreInLink = false;
     if (genreSelection.length === 1) {
       url += `movie_genre=${genreSelection[0]}`;
@@ -202,7 +202,7 @@ const randomMovie = (e) => {
 };
 
 const randomBallMovie = () => {
-  axios.get("http://localhost:4000/api/getAllMovies").then((res) => {
+  axios.get("${url}/api/getAllMovies").then((res) => {
     let length = res.data.length;
     let num = Math.floor(Math.random() * length);
     let movie = res.data[num];
