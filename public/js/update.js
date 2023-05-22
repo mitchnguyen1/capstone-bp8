@@ -1,6 +1,6 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".card");
-let movieSelection = document.querySelector("#movie")
+let movieSelection = document.querySelector("#movie");
 
 //make a get request for all movies
 const dropboxMovieOptions = () => {
@@ -11,18 +11,30 @@ const dropboxMovieOptions = () => {
       var textB = b.movie_title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
-    for (let i = 1; i < res.data.length ; i++) {
+    for (let i = 0; i < res.data.length; i++) {
       let option = document.createElement("option");
       option.setAttribute("value", res.data[i].movie_id);
       option.innerHTML = `${res.data[i].movie_title}`;
       movieSelection.appendChild(option);
     }
+    // set the initial poster
+    let id = movieSelection.options[0].value;
+    axios.get(`http://localhost:4000/api/getByID/${id}`).then((res) => {
+      displayCard(res);
+    });
+  });
+};
+//delete request for button
+const deleteMovie = (id) => {
+  axios.delete(`http://localhost:4000/api/deleteMovie/${id}`).then((res) => {
+    location.reload();
   });
 };
 //display movie
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
-  const { movie_img, genre, movie_title, movie_year } = res.data[0];
+  console.log(res.data[0]);
+  const { movie_img, genre, movie_title, movie_year, movie_id } = res.data[0];
 
   let bar = document.createElement("div");
   bar.setAttribute("class", "bar");
@@ -35,7 +47,7 @@ const displayCard = (res) => {
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("id", color);
     svg.setAttribute("viewBox", "0 0 100 100");
-
+  
     let circle = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "circle"
@@ -44,7 +56,11 @@ const displayCard = (res) => {
     circle.setAttribute("cy", "50");
     circle.setAttribute("r", "50");
     circle.setAttribute("fill", colors[color]);
-
+  //delete button
+  if (color == "red") {
+    circle.setAttribute("id", `${movie_id}`);
+    circle.setAttribute("onclick", "deleteMovie(this.id)");
+  }
     svg.appendChild(circle);
     tinyButtons.appendChild(svg);
   }
@@ -81,8 +97,6 @@ const displayCard = (res) => {
 
   // Append the body to the card
   movieDisplay.appendChild(body);
-
-
 };
 //function to send the form data to backend
 const updateMovie = (e) => {
@@ -105,34 +119,32 @@ const updateMovie = (e) => {
   });
 };
 
-//create a find by id api to display the users current selection 
+//create a find by id api to display the users current selection
 //detect the selection and change of the dropbox
 //on load and on change, call the api with the option.value(movie id)
 //get the movie data and display it
-const movieCard = (e) =>{
-  let id = e.target.value
-  axios.get(`http://localhost:4000/api/getByID/${id}`)
-  .then(res=>{
-    displayCard(res)
-  })
-}
-//set the initial poster
-let id = movieSelection.value
-  axios.get(`http://localhost:4000/api/getByID/${id}`)
-  .then(res=>{
-    displayCard(res)
-  })
-movieSelection.addEventListener("change",movieCard)
+const movieCard = (e) => {
+  let id = e.target.value;
+  axios
+    .get(`http://localhost:4000/api/getByID/${id}`)
+    .then((res) => {
+      displayCard(res);
+    })
+    .catch((err) => alert(err));
+};
+
+movieSelection.addEventListener("change", movieCard);
 form.addEventListener("submit", updateMovie);
 //call function to display movies in dropbox
 dropboxMovieOptions();
-console.log(id)
 
 //fading animation
 const fadeOutPage = () => {
-  if (!window.AnimationEvent) { return; }
-  fader.classList.add('fade-out');
-}
+  if (!window.AnimationEvent) {
+    return;
+  }
+  fader.classList.add("fade-out");
+};
 
 // Run the animation once the page finishes loading
 window.addEventListener("load", function () {

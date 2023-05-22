@@ -109,6 +109,23 @@ const displayCard = (res) => {
      start: "top 88%",
      end: "bottom 20%",
    });
+  //  for (let i = 0; i < data.length; i++){
+  //   let id = data[i].movie_id
+  //   console.log(`#${id}`)
+  //   Draggable.create(`#${id}`, {
+  //     bounds: document.body,
+  //    type: "x,y",
+  //    liveSnap: {
+  //      points: [
+  //        { x: 0, y: 0 },
+  //      ],
+  //      radius: 50
+  //    }
+  //  })
+
+  //  }
+
+
 }
 
 //get request every time a user loads the page and call the display function
@@ -138,9 +155,14 @@ const fadeOutPage = () => {
   if (!window.AnimationEvent) { return; }
   fader.classList.add('fade-out');
 }
-
+const draggable = () =>{
+  let movies = document.querySelectorAll("#card")
+  console.log(movies)
+}
 // Run the animation once the page finishes loading
 window.addEventListener("load", function () {
   fadeOutPage();
   display()
+
 });
+
