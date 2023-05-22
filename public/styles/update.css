@@ -48,14 +48,13 @@ nav {
 }
 
 .navbar-nav .nav-item .nav-link {
-  background-color: #171d29;
   padding: 12px 24px;
   font-size: 2vh;
   color: #ffffff ;
   margin: 1vh 0.5vw;
   z-index: 1;
   border-radius: 13px;
-  background: #171d29;
+  background: #3c375d;
   box-shadow: 5px 5px 14px #090c10, -5px -5px 14px #252e42;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
