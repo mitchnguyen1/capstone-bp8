@@ -202,7 +202,7 @@ const randomMovie = (e) => {
 };
 
 const randomBallMovie = () => {
-  axios.get("${url}/api/getAllMovies").then((res) => {
+  axios.get(`${baseUrl}/api/getAllMovies`).then((res) => {
     let length = res.data.length;
     let num = Math.floor(Math.random() * length);
     let movie = res.data[num];
