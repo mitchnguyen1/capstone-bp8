@@ -162,6 +162,8 @@ section {
   box-shadow: 0px 0px 22px -6px rgba(102, 136, 204, 1);
 }
 .card img {
+  height: 100%;
+  width: 100%;
   max-width: 80%;
   max-height: 80%;
   border-radius: 20px !important;
@@ -169,14 +171,14 @@ section {
   margin: 0 auto;
 }
 
-h5 {
-  font-size: 2.5rem;
+.card-title{
+  font-size: 3vh;
 }
 .card-text {
   display: flex;
   flex-direction: column;
   margin-top: 0vh;
-  font-size: 1.6rem;
+  font-size: 2.25vh;
 }
 #randomBall {
   display: block;

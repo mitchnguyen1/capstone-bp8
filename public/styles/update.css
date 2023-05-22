@@ -171,6 +171,13 @@ form {
 
 #submit {
   width: max-content;
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+  color: white;
+  font-size: 3vh;
+  border-radius: 38px;
+  background: linear-gradient(145deg, #403b64, #363254);
+  box-shadow: 5px 5px 10px #1e1c2f, -5px -5px 10px #5a538c;
 }
 
 #movieYear{
