@@ -91,7 +91,8 @@ module.exports = {
 
     sequelize.query(`SELECT * FROM movie`).then((dbRes) => {
       let id = dbRes[0].length + 1;
-
+      console.log(dbRes[0].length)
+      console.log(id)
       axios
         .get(
           `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movie_title}`
