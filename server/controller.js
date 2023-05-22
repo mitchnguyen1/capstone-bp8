@@ -44,7 +44,7 @@ module.exports = {
           `;
           query += body;
         }
-        return sequelize.query(query);
+        sequelize.query(query);
       })
       .then(() => {
         console.log("DB seeded!");
@@ -161,8 +161,11 @@ module.exports = {
     }
 
     let whereQuery = "";
-    console.log(yearQuery)
-    if (genreQuery != "g.genre = 'undefined'" && yearQuery != "m.movie_year = 'undefined'") {
+    console.log(yearQuery);
+    if (
+      genreQuery != "g.genre = 'undefined'" &&
+      yearQuery != "m.movie_year = 'undefined'"
+    ) {
       whereQuery = `WHERE ${genreQuery} AND ${yearQuery}`;
     } else if (genreQuery != "g.genre = 'undefined'") {
       whereQuery = `WHERE ${genreQuery}`;
@@ -222,17 +225,22 @@ module.exports = {
     `;
     sequelize.query(query).then((dbRes) => res.status(200).send(dbRes[0]));
   },
-  findById: (req,res) =>{
-     const {id} = req.params;
-     let query = `
+  findById: (req, res) => {
+    const { id } = req.params;
+    let query = `
       SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre,g.genre_id
       FROM movie m
       JOIN movie_genre mg ON m.movie_id = mg.movie_id
       JOIN genre g ON mg.genre_id = g.genre_id
       WHERE m.movie_id = ${id};
-     `
-     sequelize.query(query)
-     .then(dbRes=>{res.status(200).send(dbRes[0])})
-     .catch(err=>{res.status(500).send(err)})
-  }
+     `;
+    sequelize
+      .query(query)
+      .then((dbRes) => {
+        res.status(200).send(dbRes[0]);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  },
 };

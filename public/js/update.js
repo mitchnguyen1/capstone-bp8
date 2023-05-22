@@ -5,6 +5,7 @@ let baseUrl = "http://54.190.34.112"
 //make a get request for all movies
 const dropboxMovieOptions = () => {
   axios.get(`${baseUrl}/api/getAllMovies`).then((res) => {
+    movieSelection.innerHTML = ""
     //sort alphabetically
     res.data.sort(function (a, b) {
       var textA = a.movie_title.toUpperCase();
@@ -119,10 +120,11 @@ const updateMovie = (e) => {
     genre: genre,
   };
   axios.put(`${baseUrl}/api/updateMovie`, body).then((res) => {
-    //display the updated movie
+    // Display the updated movie
     displayCard(res);
     let genreInput = document.querySelector("#movieGenre");
     genreInput.value = res.data[0].genre_id;
+    dropboxMovieOptions(); // Call dropboxMovieOptions after updating the movie
   });
 };
 
