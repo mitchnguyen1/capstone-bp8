@@ -90,9 +90,7 @@ module.exports = {
     const { movie_title, movie_year, movie_genre } = req.body;
 
     sequelize.query(`SELECT * FROM movie`).then((dbRes) => {
-      let id = dbRes[0].length + 1;
-      console.log(dbRes[0].length)
-      console.log(id)
+      let id = dbRes[0].length + 2;
       axios
         .get(
           `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movie_title}`
