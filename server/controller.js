@@ -215,7 +215,7 @@ module.exports = {
       UPDATE movie_genre SET genre_id = ${genre}
       WHERE movie_id = ${movie_id};
       
-      SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre
+      SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre,g.genre_id
       FROM movie m
       JOIN movie_genre mg ON m.movie_id = mg.movie_id
       JOIN genre g ON mg.genre_id = g.genre_id
@@ -226,7 +226,7 @@ module.exports = {
   findById: (req,res) =>{
      const {id} = req.params;
      let query = `
-      SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre
+      SELECT m.movie_id, m.movie_title, m.movie_year, m.movie_img, g.genre,g.genre_id
       FROM movie m
       JOIN movie_genre mg ON m.movie_id = mg.movie_id
       JOIN genre g ON mg.genre_id = g.genre_id

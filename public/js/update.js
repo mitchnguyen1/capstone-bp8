@@ -33,8 +33,15 @@ const deleteMovie = (id) => {
 //display movie
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
-  console.log(res.data[0]);
-  const { movie_img, genre, movie_title, movie_year, movie_id } = res.data[0];
+
+  const { movie_img, genre, movie_title, movie_year, movie_id,genre_id } = res.data[0];
+  //change the form inputs to match selected movie
+  let yearInput = document.querySelector("#movieYear");
+  yearInput.value = movie_year
+  let genreInput = document.querySelector("#movieGenre");
+  genreInput.value = genre_id;
+  let titleInput = document.querySelector("#movieTitle");
+  titleInput.value = movie_title;
 
   let bar = document.createElement("div");
   bar.setAttribute("class", "bar");
@@ -47,7 +54,7 @@ const displayCard = (res) => {
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("id", color);
     svg.setAttribute("viewBox", "0 0 100 100");
-  
+
     let circle = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "circle"
@@ -56,11 +63,11 @@ const displayCard = (res) => {
     circle.setAttribute("cy", "50");
     circle.setAttribute("r", "50");
     circle.setAttribute("fill", colors[color]);
-  //delete button
-  if (color == "red") {
-    circle.setAttribute("id", `${movie_id}`);
-    circle.setAttribute("onclick", "deleteMovie(this.id)");
-  }
+    //delete button
+    if (color == "red") {
+      circle.setAttribute("id", `${movie_id}`);
+      circle.setAttribute("onclick", "deleteMovie(this.id)");
+    }
     svg.appendChild(circle);
     tinyButtons.appendChild(svg);
   }
@@ -111,11 +118,11 @@ const updateMovie = (e) => {
     movie_year: year,
     genre: genre,
   };
-  title.innerHTML = "";
-  year.innerHTML = "";
   axios.put("http://localhost:4000/api/updateMovie", body).then((res) => {
     //display the updated movie
     displayCard(res);
+    let genreInput = document.querySelector("#movieGenre");
+    genreInput.value = res.data[0].genre_id;
   });
 };
 
@@ -124,6 +131,7 @@ const updateMovie = (e) => {
 //on load and on change, call the api with the option.value(movie id)
 //get the movie data and display it
 const movieCard = (e) => {
+  e.preventDefault()
   let id = e.target.value;
   axios
     .get(`http://localhost:4000/api/getByID/${id}`)
