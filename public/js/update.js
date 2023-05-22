@@ -127,3 +127,14 @@ form.addEventListener("submit", updateMovie);
 //call function to display movies in dropbox
 dropboxMovieOptions();
 console.log(id)
+
+//fading animation
+const fadeOutPage = () => {
+  if (!window.AnimationEvent) { return; }
+  fader.classList.add('fade-out');
+}
+
+// Run the animation once the page finishes loading
+window.addEventListener("load", function () {
+  fadeOutPage();
+});

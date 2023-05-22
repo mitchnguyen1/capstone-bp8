@@ -1,142 +1,164 @@
 html {
-    margin: 0;
-    height: 100%;
-  }
-  @font-face {
-      font-family: "Basement";
-      src: url(../images/BasementGrotesque-Black_v1.202.otf);
-  }
-  body {
-    background-image: url(../images/peakpx.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #e9ecef;
-    text-align: center;
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    backdrop-filter: blur(4px);
-    --color-text-circle-1: white;
-    --color-text-circle-2: rgb(255, 30, 30);
-    --font-circle-1: niagara, serif;
-    --font-weight-circle-1: 300;
-    --font-circle-2: ambroise-firmin-std, serif;
-    --font-weight-circle-2: 300;
-    --darkBlue: #000d18;
-    --dBlue: #051337;
-    --blue: #6688cc;
-    --lightBlue: #3794ff;
-  }
-  .ball {
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border: 3px solid rgb(255, 30, 30);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 1;
-  }
-  .blackBackground{
-    background-color: #39095b;
-    background-image: linear-gradient(var(--dBlue),var(--darkBlue));
-    width: 100%;
-    margin-left: -5vh;
-    display: flex;
-    align-items: center;
-  }
-  
-  .buttons {
-    display: none;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: center;
-    z-index: 1;
-  }
-  button {
-    font-size: 10vmin;
-    height: auto;
-    line-height: 10vh;
-    background-color: transparent;
-    border: none;
-    color: white;
-    padding: 0;
-    font-family: "Bebas Neue", sans-serif;
-    white-space: nowrap;
-    transition: 0.5s;
-  }
-  button:hover {
-    color: rgb(255, 30, 30);
-    font-size: 12vmin; /* Adjust this value as needed */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    transition: 0.5s;
-  }
+  margin: 0;
+  height: 100%;
+}
+@font-face {
+  font-family: "Basement";
+  src: url(../images/BasementGrotesque-Black_v1.202.otf);
+}
+body {
+  background-image: url(../images/peakpx.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #e9ecef;
+  text-align: center;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  backdrop-filter: blur(4px);
+  --color-text-circle-1: white;
+  --color-text-circle-2: rgb(255, 30, 30);
+  --font-circle-1: niagara, serif;
+  --font-weight-circle-1: 300;
+  --font-circle-2: ambroise-firmin-std, serif;
+  --font-weight-circle-2: 300;
+  --darkBlue: #000d18;
+  --dBlue: #051337;
+  --blue: #6688cc;
+  --lightBlue: #3794ff;
+}
+.ball {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 3px solid rgb(255, 30, 30);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+.blackBackground {
+  background-color: #39095b;
+  background-image: linear-gradient(var(--dBlue), var(--darkBlue));
+  width: 100%;
+  margin-left: -5vh;
+  display: flex;
+  align-items: center;
+}
 
-  .left{
-    display: flex;
-    align-items: center;
-  }
-  
-  
-  .circles {
-      pointer-events: none;
-      --dim: 80vmin;
-      width: var(--dim);
-      height: var(--dim);
-    }
-  
-  
-  .circles__text {
-    text-transform: uppercase;
-    transform-origin: 700px 700px;
-    will-change: transform, opacity;
-  }
-  
-  .circles__text--1 {
-    font-size: 130px;
-    font-family: var(--font-circle-1);
-    font-weight: var(--font-weight-circle-1);
-    fill: var(--color-text-circle-1);
-  }
-  
-  .circles__text--2 {
-    font-size: 130px;
-    font-family: var(--font-circle-2);
-    font-weight: var(--font-weight-circle-2);
-    fill: var(--color-text-circle-2);
+.buttons {
+  display: none;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  z-index: 1;
+}
+button {
+  font-size: 10vmin;
+  height: auto;
+  line-height: 10vh;
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 0;
+  font-family: "Bebas Neue", sans-serif;
+  white-space: nowrap;
+  transition: 0.5s;
+}
+button:hover {
+  color: rgb(255, 30, 30);
+  font-size: 12vmin; /* Adjust this value as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.5s;
+}
 
-  }
-  
-  
-  img {
-    cursor: pointer;
-  }
+.left {
+  display: flex;
+  align-items: center;
+}
 
-  #X{
-    position: absolute;
-    top: 5vh;
-    right: 20vh;
-    width:12vw;
-  }
-  
-  #arrow{
-    position: absolute;
-    bottom: 0;
-    right:10vw;
-    width: 25vw
-  }
+.circles {
+  pointer-events: none;
+  --dim: 80vmin;
+  width: var(--dim);
+  height: var(--dim);
+}
 
-  #smallX{
-    position: absolute;
-    top: 2vh;
-    right:30vw;
-    width: 20vw;
-  }
+.circles__text {
+  text-transform: uppercase;
+  transform-origin: 700px 700px;
+  will-change: transform, opacity;
+}
 
+.circles__text--1 {
+  font-size: 130px;
+  font-family: var(--font-circle-1);
+  font-weight: var(--font-weight-circle-1);
+  fill: var(--color-text-circle-1);
+}
+
+.circles__text--2 {
+  font-size: 130px;
+  font-family: var(--font-circle-2);
+  font-weight: var(--font-weight-circle-2);
+  fill: var(--color-text-circle-2);
+}
+
+img {
+  cursor: pointer;
+}
+
+#X {
+  position: absolute;
+  top: 5vh;
+  right: 20vh;
+  width: 12vw;
+}
+
+#arrow {
+  position: absolute;
+  bottom: 0;
+  right: 10vw;
+  width: 25vw;
+}
+
+#smallX {
+  position: absolute;
+  top: 2vh;
+  right: 30vw;
+  width: 20vw;
+}
+
+/* page transition */
+#fader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  pointer-events: none;
+  background: #000d18;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#fader.fade-out {
+  opacity: 0;
+  animation-name: fade-out;
+}

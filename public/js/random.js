@@ -225,3 +225,14 @@ const closeCard = () => {
 submit.forEach((button) => {
   button.addEventListener("click", randomMovie);
 });
+
+//fading animation
+const fadeOutPage = () => {
+  if (!window.AnimationEvent) { return; }
+  fader.classList.add('fade-out');
+}
+
+// Run the animation once the page finishes loading
+window.addEventListener("load", function () {
+  fadeOutPage();
+});

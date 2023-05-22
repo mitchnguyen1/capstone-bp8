@@ -57,7 +57,14 @@ function animation() {
   tl.to("#smallX", { y: 0, opacity: 1, rotation: 140, duration: 1 }, "-=1");
 }
 
+
+const fadeOutPage = () => {
+  if (!window.AnimationEvent) { return; }
+  fader.classList.add('fade-out');
+}
+
 // Run the animation once the page finishes loading
 window.addEventListener("load", function () {
   animation();
+  fadeOutPage();
 });
