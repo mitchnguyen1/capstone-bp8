@@ -1,6 +1,6 @@
 # Movie Roulette
 
-The main goal of this website is to give the user a random movie to watch when there's nothing to watch. The user is able to select from a list of genres from 2000 to 2023, so the selection is dynamic for the user. Users are able to edit a movie by the title, genre, or year. Results will appear in realtime as the user changes them. Users can delete movies while viewing all of the movies. The red circle is interactive and will delete the movie from the database. GSAP is used to animate the html elements and page transition. Utilizing flexbox and Bootstrap to create a responsive site
+The main goal of this website is to give the user a random movie to watch when there's nothing to watch. The user is able to select from a list of genres from 2000 to 2023, so the selection is dynamic for the user. Users are able to edit a movie by the title, genre, or year. Results will appear in realtime as the user changes them. Users can delete movies while viewing all of the movies. The red circle is interactive and will delete the movie from the database. GSAP is used to animate the html elements and page transition. Utilizing flexbox and Bootstrap to create a responsive site.
 
 
 ## Tech Stack
