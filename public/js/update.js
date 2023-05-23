@@ -12,7 +12,7 @@ const dropboxMovieOptions = () => {
       var textB = b.movie_title.toUpperCase();
       return textA < textB ? -1 : textA > textB ? 1 : 0;
     });
-    for (let i = 0; i < res.data.length; i++) {
+    for (let i = 2; i < res.data.length; i++) {
       let option = document.createElement("option");
       option.setAttribute("value", res.data[i].movie_id);
       option.innerHTML = `${res.data[i].movie_title}`;
