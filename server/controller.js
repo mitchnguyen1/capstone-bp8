@@ -18,6 +18,7 @@ module.exports = {
     let query = `
         DROP TABLE IF EXISTS movie_genre;
         DROP TABLE IF EXISTS movie;
+        DROP TABLE IF EXISTS genre;
         
         CREATE TABLE movie (
           movie_id serial PRIMARY KEY, 
@@ -25,11 +26,38 @@ module.exports = {
           movie_year INTEGER,
           movie_img VARCHAR(255)
         );
+
+        CREATE TABLE genre (
+          genre_id serial PRIMARY KEY,
+          genre VARCHAR(255)
+        );
         
         CREATE TABLE movie_genre (
           movie_id INTEGER REFERENCES movie(movie_id),
           genre_id INTEGER REFERENCES genre(genre_id)
         );
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (28,'Action');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (12,'Adventure');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (35,'Comedy');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (18,'Drama');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (14,'Fantasy');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (27,'Horror');
+
+        INSERT INTO genre (genre_id, genre) 
+        VALUES (53,'Thriller');
+
     `;
 
     getMovies()

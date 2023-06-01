@@ -7,7 +7,7 @@ let randomBall = document.querySelector("#randomBall");
 let alertBox = document.querySelector(".alert");
 let yearSelection = [];
 let genreSelection = [];
-let baseUrl = "http://54.190.34.112"
+let baseUrl = "https://capstone-0a2c.onrender.com"
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
   const { movie_img, genre, movie_title, movie_year } = res;

@@ -1,7 +1,7 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".card");
 let movieSelection = document.querySelector("#movie");
-let baseUrl = "http://54.190.34.112"
+let baseUrl = "https://capstone-0a2c.onrender.com"
 //make a get request for all movies
 const dropboxMovieOptions = () => {
   axios.get(`${baseUrl}/api/getAllMovies`).then((res) => {

@@ -1,6 +1,6 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".movies");
-let baseUrl = "http://54.190.34.112"
+let baseUrl = "https://capstone-0a2c.onrender.com"
 const submitMovie = (e) => {
   e.preventDefault();
   let title = document.querySelector("#movieTitle").value;
