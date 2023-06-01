@@ -1,5 +1,5 @@
 const movieDisplay = document.querySelector(".movies");
-let baseUrl = "http://54.190.34.112"
+let baseUrl = "https://capstone-0a2c.onrender.com"
 
 //function to shuffle the movies
 function shuffle(sourceArray) {
