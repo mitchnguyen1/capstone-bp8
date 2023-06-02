@@ -1,5 +1,5 @@
 let logo = document.querySelector("#X")
-let baseUrl = "https://capstone-0a2c.onrender.com"
+let baseUrl = "https://34.214.181.51/"
 const seed = () => {
   console.log(1)
   axios
