@@ -1,6 +1,6 @@
 let form = document.querySelector("form");
 let movieDisplay = document.querySelector(".movies");
-let baseUrl = "http://34.214.181.51"
+let baseUrl = "http://34.209.243.219"
 const submitMovie = (e) => {
   e.preventDefault();
   let title = document.querySelector("#movieTitle").value;

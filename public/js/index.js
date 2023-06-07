@@ -1,5 +1,5 @@
 let logo = document.querySelector("#X")
-let baseUrl = "http://34.214.181.51"
+let baseUrl = "http://34.209.243.219"
 const seed = () => {
   console.log(1)
   axios

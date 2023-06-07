@@ -7,7 +7,7 @@ let randomBall = document.querySelector("#randomBall");
 let alertBox = document.querySelector(".alert");
 let yearSelection = [];
 let genreSelection = [];
-let baseUrl = "http://34.214.181.51"
+let baseUrl = "http://34.209.243.219"
 const displayCard = (res) => {
   movieDisplay.innerHTML = "";
   const { movie_img, genre, movie_title, movie_year } = res;
